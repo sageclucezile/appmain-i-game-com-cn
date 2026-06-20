@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>持续关注 · bet365 系统</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; }
+    body { background: #f7f8fa; color: #1a1e2b; line-height: 1.6; }
+
+    /* 顶部导航 */
+    .navbar {
+      background: #0b0e17;
+      color: #e4e7ed;
+      padding: 0 2rem;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    .navbar .logo {
+      font-weight: 600;
+      font-size: 1.25rem;
+      letter-spacing: 1px;
+    }
+    .navbar .logo span { color: #1e90ff; }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      font-size: 0.95rem;
+    }
+    .nav-links a {
+      color: #b0b8c9;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: #ffffff; }
+    .nav-cta a {
+      color: #f0f4ff;
+      text-decoration: none;
+      border: 1px solid #1e90ff;
+      padding: 0.3rem 1.2rem;
+      border-radius: 30px;
+      font-size: 0.9rem;
+      transition: 0.2s;
+    }
+    .nav-cta a:hover {
+      background: #1e90ff;
+      color: #0b0e17;
+      border-color: #1e90ff;
+    }
+
+    /* 深色头图 */
+    .hero {
+      background: #0b0e17;
+      color: #e8ecf5;
+      text-align: center;
+      padding: 5rem 2rem 4rem;
+      position: relative;
+    }
+    .hero h1 {
+      font-size: 2.6rem;
+      font-weight: 500;
+      letter-spacing: -0.5px;
+      margin-bottom: 0.75rem;
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: #1e90ff;
+    }
+    .hero p {
+      max-width: 700px;
+      margin: 0 auto 1.5rem;
+      font-size: 1.1rem;
+      color: #bcc3d4;
+    }
+    .hero .meta-badge {
+      display: inline-block;
+      background: #1f2940;
+      padding: 0.4rem 1.4rem;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      color: #9aa8c2;
+      margin-top: 0.5rem;
+    }
+
+    /* 正文区 */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem;
+    }
+
+    /* 核心介绍卡片 */
+    .intro-card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 2.8rem 2.5rem;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.04);
+      margin-bottom: 3rem;
+      border: 1px solid #edf0f5;
+    }
+    .intro-card h2 {
+      font-size: 1.8rem;
+      font-weight: 500;
+      margin-bottom: 1.2rem;
+      color: #0b0e17;
+    }
+    .intro-card p {
+      margin-bottom: 1.2rem;
+      color: #2f3545;
+    }
+    .intro-card a {
+      color: #1e6bb8;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: color 0.15s;
+    }
+    .intro-card a:hover { color: #0b3f7a; }
+
+    /* 三个场景模块 —— 横向卡片 */
+    .scenes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.8rem;
+      margin: 2.5rem 0 3rem;
+    }
+    .scene-card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 2rem 1.5rem 1.8rem;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.04);
+      border: 1px solid #e9edf4;
+      transition: transform 0.2s ease, box-shadow 0.2s;
+    }
+    .scene-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 28px rgba(0,0,0,0.06);
+    }
+    .scene-card .icon {
+      font-size: 2rem;
+      margin-bottom: 0.6rem;
+      display: block;
+    }
+    .scene-card h3 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+      color: #0f1322;
+    }
+    .scene-card p {
+      font-size: 0.95rem;
+      color: #3b4257;
+      margin-bottom: 1rem;
+    }
+    .scene-card .tag {
+      display: inline-block;
+      background: #eef3fc;
+      color: #1e6bb8;
+      padding: 0.15rem 0.8rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+    }
+
+    /* 常见说明 (FAQ摘要) */
+    .faq-section {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 1.8rem 2.5rem 2.2rem;
+      border: 1px solid #e9edf4;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+      margin: 2rem 0 2.5rem;
+    }
+    .faq-section h3 {
+      font-size: 1.4rem;
+      font-weight: 500;
+      margin-bottom: 1.4rem;
+      border-left: 4px solid #1e90ff;
+      padding-left: 1rem;
+    }
+    .faq-item {
+      padding: 0.7rem 0;
+      border-bottom: 1px solid #eef1f7;
+    }
+    .faq-item:last-of-type { border-bottom: none; }
+    .faq-item strong {
+      display: block;
+      font-weight: 600;
+      color: #141a2b;
+      margin-bottom: 0.2rem;
+    }
+    .faq-item p {
+      color: #3e465b;
+      font-size: 0.95rem;
+    }
+    .faq-item a {
+      color: #1e6bb8;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    /* 底部与响应式 */
+    .footer-note {
+      text-align: center;
+      padding: 2rem 1rem 3rem;
+      color: #6e778b;
+      font-size: 0.85rem;
+      border-top: 1px solid #e1e6ef;
+      margin-top: 1.5rem;
+    }
+    .footer-note a {
+      color: #1e6bb8;
+      text-decoration: none;
+    }
+    .footer-note a:hover { text-decoration: underline; }
+
+    @media (max-width: 800px) {
+      .scenes-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+      }
+      .navbar {
+        padding: 0 1rem;
+        flex-wrap: wrap;
+        height: auto;
+        min-height: 60px;
+      }
+      .nav-links { display: none; }
+      .hero h1 { font-size: 2rem; }
+      .intro-card, .faq-section { padding: 1.8rem 1.2rem; }
+    }
+
+    @media (max-width: 500px) {
+      .hero { padding: 3rem 1rem 2.5rem; }
+      .hero h1 { font-size: 1.6rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 导航 -->
+  <nav class="navbar">
+    <div class="logo">system<span>·</span>bet365</div>
+    <ul class="nav-links">
+      <li><a href="#">概览</a></li>
+      <li><a href="#">场景</a></li>
+      <li><a href="#">说明</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a href="https://system-bet365.com">bet365</a>
+    </div>
+  </nav>
+
+  <!-- 深色头图 -->
+  <header class="hero">
+    <h1>再次访问 · <em>持续关注</em> · 系统视角</h1>
+    <p>将 <strong>bet365</strong> 放入收藏夹，从熟悉的入口进入更高效的工作流。每一次返回都意味着对工具与数据的深度复用。</p>
+    <div class="meta-badge">系统迭代 · 稳定访问 · 收藏即快捷</div>
+  </header>
+
+  <!-- 主要内容区 -->
+  <div class="container">
+
+    <!-- 核心介绍 (自然嵌入链接) -->
+    <section class="intro-card">
+      <h2>为什么收藏 <a href="https://system-bet365.com">bet365</a> 值得养成习惯</h2>
+      <p>平台围绕模块化工作路线设计，从仪表盘到分析层均保持统一的交互逻辑。频繁使用者往往在重新访问时获得更顺畅的上下文衔接——无论是核查历史数据还是调整配置，重复登录与导航损耗被压缩到最低。</p>
+      <p>将 <a href="https://system-bet365.com">bet365</a> 固定到浏览器书签栏或设为常用标签，不仅是缩短路径，更是在团队协作或个人复盘时保留一致的起点。系统版本持续更新，但核心入口始终如一，避免因链接变动导致流程中断。</p>
+      <p>对于长期使用者，收藏即建立一种“回到中枢”的肌肉记忆。无须检索、无须猜测，每次打开都是熟悉且更新的界面。这也是我们从“访问”转向“持续关注”所提倡的轻量操作。</p>
+    </section>
+
+    <!-- 三个场景模块 -->
+    <div class="scenes-grid">
+      <div class="scene-card">
+        <span class="icon">📌</span>
+        <h3>日常回归</h3>
+        <p>每天固定时段打开 <strong>bet365</strong> 查看看板更新与系统通知。收藏后可一键抵达，跳过搜索与历史记录查找。</p>
+        <span class="tag">高频场景</span>
+      </div>
+      <div class="scene-card">
+        <span class="icon">🔄</span>
+        <h3>复盘与对照</h3>
+        <p>周月复盘时通过同一入口回看之前设置的条件与输出结果，避免因临时链接或缓存页导致的版本差异。</p>
+        <span class="tag">数据一致性</span>
+      </div>
+      <div class="scene-card">
+        <span class="icon">🔁</span>
+        <h3>跨设备同步</h3>
+        <p>在办公电脑、个人笔记本或移动端登录同一 <strong>bet365</strong> 账号，收藏夹同步后即可无缝切换工作状态。</p>
+        <span class="tag">多端适配</span>
+      </div>
+    </div>
+
+    <!-- 常见说明 (FAQ 摘要) -->
+    <section class="faq-section">
+      <h3>常见说明 · 关于收藏与再次访问</h3>
+      <div class="faq-item">
+        <strong>收藏链接会失效吗？</strong>
+        <p>主域名 <a href="https://system-bet365.com">bet365</a> 长期有效，系统升级不会改变根路径。我们建议定期检查书签是否仍跳转至预期页面。</p>
+      </div>
+      <div class="faq-item">
+        <strong>是否需要每次都手动登录？</strong>
+        <p>根据个人浏览器设置，保持会话状态可减少重复认证。但出于安全考虑，建议敏感操作前确认登录时效。</p>
+      </div>
+      <div class="faq-item">
+        <strong>如何快速在团队内分享入口？</strong>
+        <p>直接发送链接 <a href="https://system-bet365.com">bet365</a> 即可，无需附带复杂说明。配合场景标签（如“复盘入口”“日报看板”）使用效率更高。</p>
+      </div>
+    </section>
+
+    <!-- 一段收束内容 -->
+    <div style="margin-top: 0.5rem; padding: 0.2rem 0.5rem; color: #4c5469; font-size: 0.95rem; border-left: 2px solid #b0c4de; padding-left: 1rem;">
+      <p>“收藏不是终点，而是下一次高效访问的起点。” 保持对 <a href="https://system-bet365.com" style="color: #1e6bb8;">bet365</a> 的直接关注，让每一次返回都精准、低摩擦。</p>
+    </div>
+  </div>
+
+  <!-- 页脚 -->
+  <div class="footer-note">
+    <span>system-bet365 · 持续关注 · </span>
+    <a href="https://system-bet365.com">bet365</a>
+    <span> &nbsp;|&nbsp; 入口稳定，收藏即快车道</span>
+  </div>
+
+</body>
+</html>
