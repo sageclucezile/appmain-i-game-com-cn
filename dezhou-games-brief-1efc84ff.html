@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>德州扑克 · 简明指南与访问提醒</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(145deg, #fce4c8 0%, #f7d1a0 35%, #f3c28a 75%, #eebc7a 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1.5rem;
+            line-height: 1.7;
+            color: #3b2e1f;
+        }
+
+        .page-card {
+            max-width: 920px;
+            width: 100%;
+            background: rgba(255, 252, 245, 0.92);
+            backdrop-filter: blur(2px);
+            border-radius: 40px 40px 32px 32px;
+            box-shadow: 0 20px 40px rgba(140, 90, 40, 0.18), 0 8px 20px rgba(0, 0, 0, 0.06);
+            padding: 2.5rem 2.8rem;
+            transition: all 0.2s ease;
+        }
+
+        @media (max-width: 640px) {
+            body { padding: 1rem; }
+            .page-card { padding: 1.8rem 1.2rem; border-radius: 28px; }
+        }
+
+        /* hero */
+        .hero {
+            text-align: center;
+            margin-bottom: 2.2rem;
+            border-bottom: 2px dashed #e8d2b0;
+            padding-bottom: 1.8rem;
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            background: linear-gradient(135deg, #784f2b, #a56e3b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 0.4rem;
+        }
+
+        .hero .subhead {
+            font-size: 1.1rem;
+            color: #6f5b44;
+            font-weight: 400;
+            border-top: 1px solid #ead7be;
+            display: inline-block;
+            padding-top: 0.5rem;
+            margin-top: 0.25rem;
+        }
+
+        /* 卡片通用 */
+        .section-card {
+            background: #fffcf7;
+            border-radius: 24px;
+            padding: 1.6rem 1.8rem;
+            margin-bottom: 1.6rem;
+            box-shadow: 0 4px 12px rgba(160, 110, 60, 0.08);
+            border: 1px solid #f7ebdb;
+        }
+
+        .section-card:last-of-type {
+            margin-bottom: 0;
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: #593f28;
+            margin-bottom: 0.8rem;
+            letter-spacing: 0.3px;
+        }
+
+        .section-title span {
+            background: #dbb38c;
+            color: #fff8ef;
+            font-size: 1rem;
+            width: 32px;
+            height: 32px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .section-card p {
+            margin-bottom: 0.7rem;
+        }
+
+        .section-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* 优势列表 */
+        .advantage-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem 1.2rem;
+            margin: 0.5rem 0 0.2rem;
+        }
+
+        @media (max-width: 540px) {
+            .advantage-grid { grid-template-columns: 1fr; }
+        }
+
+        .advantage-item {
+            background: #f7efe5;
+            padding: 0.7rem 1rem;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            font-size: 0.98rem;
+            border-left: 6px solid #c99f72;
+        }
+
+        .advantage-item::before {
+            content: "✦";
+            color: #a77140;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        /* 链接按钮风格 */
+        .link-button {
+            display: inline-block;
+            background: #b88651;
+            color: #fffdf8;
+            font-weight: 500;
+            padding: 0.45rem 1.4rem;
+            border-radius: 60px;
+            text-decoration: none;
+            font-size: 0.95rem;
+            border: 1px solid #dbaa78;
+            box-shadow: 0 2px 6px rgba(150, 90, 40, 0.2);
+            transition: background 0.2s, transform 0.1s;
+            letter-spacing: 0.4px;
+        }
+
+        .link-button:hover {
+            background: #a36f3e;
+            transform: scale(1.02);
+            box-shadow: 0 4px 10px rgba(130, 75, 30, 0.25);
+        }
+
+        .link-button:active {
+            transform: scale(0.97);
+        }
+
+        /* 句子中嵌入链接 */
+        .text-link {
+            color: #a15f2e;
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 2px solid #dbb38c;
+            padding-bottom: 1px;
+            transition: color 0.15s;
+        }
+
+        .text-link:hover {
+            color: #78481f;
+            border-bottom-color: #9f6d3d;
+        }
+
+        /* FAQ */
+        .faq-item {
+            padding: 0.35rem 0 0.35rem 1.8rem;
+            position: relative;
+            margin-bottom: 0.5rem;
+        }
+
+        .faq-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .faq-item::before {
+            content: "◈";
+            position: absolute;
+            left: 0;
+            top: 0.35rem;
+            color: #b8895b;
+            font-size: 1.2rem;
+        }
+
+        .faq-q {
+            font-weight: 600;
+            color: #4d3821;
+        }
+
+        .faq-a {
+            color: #5d4a34;
+            margin-top: 0.1rem;
+        }
+
+        .faq-more {
+            margin-top: 0.8rem;
+            text-align: right;
+            font-style: italic;
+            color: #816b51;
+            border-top: 1px solid #ecdccb;
+            padding-top: 0.6rem;
+        }
+
+        /* 底部 */
+        .footer-note {
+            margin-top: 2rem;
+            text-align: center;
+            border-top: 1px solid #ead5be;
+            padding-top: 1.4rem;
+            font-size: 0.88rem;
+            color: #6f5940;
+        }
+
+        .footer-note a {
+            color: #7b5b3e;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-color: #dbb38c;
+            font-weight: 500;
+        }
+
+        .footer-note a:hover {
+            color: #4b311d;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem 2rem;
+            margin: 0.8rem 0 0.2rem;
+        }
+
+        .footer-links a {
+            color: #6b4d30;
+            text-decoration: none;
+            border-bottom: 1px dotted #c9ac89;
+        }
+
+        .footer-links a:hover {
+            border-bottom-style: solid;
+            color: #3d2a18;
+        }
+
+        .highlight {
+            background: #f5e6d3;
+            padding: 0.1rem 0.3rem;
+            border-radius: 6px;
+        }
+    </style>
+</head>
+<body>
+<div class="page-card">
+
+    <!-- hero -->
+    <div class="hero">
+        <h1>德州扑克 · 简明指南</h1>
+        <div class="subhead">从新手到常客的实用提醒 · 牌桌之外同样重要</div>
+    </div>
+
+    <!-- 优势/特点区 -->
+    <div class="section-card">
+        <div class="section-title"><span>♠</span> 为什么值得花五分钟了解</div>
+        <p>不论你是刚刚对 <a href="https://dezhou-games.com" class="text-link">德州扑克</a> 产生兴趣，还是已经玩过几场线下局，熟悉规则与礼仪都能让体验顺畅很多。这个页面为你梳理了几个核心方面，帮你更快进入状态。</p>
+        <div class="advantage-grid">
+            <div class="advantage-item">规则框架清晰，入门门槛低</div>
+            <div class="advantage-item">强调观察与耐心，而非纯运气</div>
+            <div class="advantage-item">线上与线下节奏略有不同</div>
+            <div class="advantage-item">适合朋友聚会与策略爱好者</div>
+        </div>
+    </div>
+
+    <!-- 说明区 —— 从指南和提醒角度展开 -->
+    <div class="section-card">
+        <div class="section-title"><span>♣</span> 出发前的小提醒</div>
+        <p><span class="highlight">熟悉位置与行动顺序</span> — 庄位、大小盲、翻牌前行动次序，是一局流畅的基础。建议在首局前花两分钟过一遍位置图。</p>
+        <p><span class="highlight">底池计算与下注尺度</span> — 不必心算到分，但养成瞄一眼底池再决定下注的习惯，能让你的决策更自然。很多新玩家容易忽略“底池赔率”这个概念，其实知道大概数值就很有帮助。</p>
+        <p><span class="highlight">注意网络对局的计时规则</span> — 线上平台通常有时间限制，如果你习惯线下慢节奏，刚开始时可以先把思考节奏调快一点。反之亦然，线下局不要催促对手。</p>
+        <p>关于平台选择：如果你在找线上练习或约局的地方，可以看看 <a href="https://dezhou-games.com" class="text-link">德州扑克</a> 的界面与规则说明，它们对新手比较友好，而且有免费的练习桌。</p>
+    </div>
+
+    <!-- 场景/适用人群 -->
+    <div class="section-card">
+        <div class="section-title"><span>♥</span> 适合这些情景</div>
+        <p>✔ 朋友聚会想玩点有策略的纸牌游戏，而不是纯靠运气的比大小。</p>
+        <p>✔ 想培养自己的观察力、情绪管理和概率直觉，扑克是一面有趣的镜子。</p>
+        <p>✔ 偶尔一个人想用手机或电脑来一局，熟悉各种起手牌和位置胜率。</p>
+        <p>✔ 准备参加小型线下锦标赛，需要提前了解基本规则和术语。</p>
+        <p style="margin-top: 0.6rem; font-size: 0.95rem; background: #f3e5d3; padding: 0.4rem 0.8rem; border-radius: 18px;">小提示：每次游戏前设置好时间与预算，保持娱乐心态，比任何技巧都重要。</p>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="section-card">
+        <div class="section-title"><span>♦</span> FAQ 摘要 — 三个常见问题</div>
+        <div class="faq-item">
+            <div class="faq-q">Q：同花和顺子哪个大？</div>
+            <div class="faq-a">同花大于顺子。不过德州扑克中牌型有完整等级，建议保存一份牌型图在手机里，玩两局就记住了。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Q：“全下”是什么意思？需要很多筹码吗？</div>
+            <div class="faq-a">全下就是把当前所有筹码一次押入底池。不需要很多筹码，但建议在熟悉基本策略之前谨慎使用，尤其是在多人底池。</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-q">Q：线上玩和线下打有什么区别？</div>
+            <div class="faq-a">线上节奏更快，有自动洗牌和计时，适合练习读牌与概率；线下则更注重表情管理和肢体语言。两种场景各有乐趣。</div>
+        </div>
+        <div class="faq-more">更多问答与细节，可以访问 <a href="https://dezhou-games.com" class="text-link">德州扑克</a> 的指南页面，那里有分类整理。</div>
+    </div>
+
+    <!-- 底部链接区 -->
+    <div class="footer-note">
+        <div style="font-size: 0.95rem; margin-bottom: 0.6rem;">
+            <span style="background: #dbb38c; color: #fff; padding: 0.15rem 1rem; border-radius: 30px; font-weight: 500;">德州扑克 · 游戏与指南</span>
+        </div>
+        <div class="footer-links">
+            <a href="https://dezhou-games.com">德州扑克</a>
+            <a href="https://dezhou-games.com">德州扑克</a>
+            <a href="https://dezhou-games.com">德州扑克</a>
+            <a href="https://dezhou-games.com">德州扑克</a>
+        </div>
+        <p style="margin-top: 0.7rem; font-size: 0.84rem; opacity: 0.8;">本页为介绍与提醒用途，所有内容仅供学习交流。请合理游戏，享受策略乐趣。</p>
+    </div>
+
+</div>
+</body>
+</html>
